@@ -17,7 +17,13 @@ if(true){
 	error_reporting(E_ALL);
 }
 
-require_once( plugin_dir_path( __FILE__ ).'class.timetrack.php' );
+require_once( plugin_dir_path( __FILE__ ).'class.fields.php' );
+use tester\fields;
+
+if( isset( $_GET['header'] ) ) {
+	$object = new tester\fields\Fields;
+	$object->updateHeader($_GET['header']);
+}
 
 //Adding an option page:
 function tester_create_option_page() {
@@ -74,46 +80,6 @@ function tester_create_option_page() {
 					'rows' => 16,
 					'new_lines' => '',
 				),
-				array(
-					'key' => 'field_5d20111947e4b',
-					'label' => 'Time Track',
-					'name' => 'time_track',
-					'type' => 'repeater',
-					'instructions' => '',
-					'required' => 0,
-					'conditional_logic' => 0,
-					'wrapper' => array(
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'collapsed' => '',
-					'min' => 0,
-					'max' => 0,
-					'layout' => 'table',
-					'button_label' => '',
-					'sub_fields' => array(
-						array(
-							'key' => 'field_5d20113347e4c',
-							'label' => 'Time',
-							'name' => 'time',
-							'type' => 'text',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-						),
-					),
-				),
 			),
 			'location' => array(
 				array(
@@ -135,10 +101,9 @@ function tester_create_option_page() {
 		));
 	endif;
 }
-
+	
 //Adding text to frontend:
 function tester_func() {
-	//update_field('header_text', 'I Love Flushing', 'option');//Use ACF update function
 	$header = get_field('header_text', 'option');
 	$content = get_field('tester_content', 'option');
 	echo $header . ' --- ' . $content;

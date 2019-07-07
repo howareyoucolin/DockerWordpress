@@ -1,0 +1,7 @@
+<phpunit bootstrap="src/autoload.php">
+  <testsuites>
+    <testsuite name="msg">
+      <file>tests/example/testExample.php</file>
+    </testsuite>
+  </testsuites>
+</phpunit>

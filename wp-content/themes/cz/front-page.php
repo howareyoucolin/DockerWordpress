@@ -11,7 +11,9 @@
 </head>
 <body>
 	<div id="main">
-		<div class="head">This website is for study and testing usage only.</div>
+		<div class="head">
+			This website is for study and testing usage only.
+		</div>
 		<section>
 			<?php do_action('tester_plugin_hook');?>
 		</section>
